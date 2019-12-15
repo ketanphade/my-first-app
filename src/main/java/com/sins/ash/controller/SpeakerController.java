@@ -1,5 +1,6 @@
 package com.sins.ash.controller;
 
+import com.sins.ash.models.Session;
 import com.sins.ash.models.Speaker;
 import com.sins.ash.repository.SpeakerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,17 @@ public class SpeakerController {
         return speakerRepository.saveAndFlush(speaker);
     }
 
+    @RequestMapping(value="{id}",method = RequestMethod.DELETE)
+    public void delete (@PathVariable Long id){
+        speakerRepository.deleteById(id);
+    }
+
+    @RequestMapping(value = {'id'},method = RequestMethod.PUT)
+    public Speaker update(@PathVariable Long id, @RequestBody Speaker speaker){
+        
+        Speaker existingSpeaker=speakerRepository.getOne(id);
+
+    }
 
 
 
