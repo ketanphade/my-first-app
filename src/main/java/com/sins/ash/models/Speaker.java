@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Speakers")
-public class Speakers {
+public class Speaker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,33 +16,14 @@ public class Speakers {
     private String title;
     private String company;
     private String speaker_bio;
-    private byte [] speaker_photo;
-    private List<Speakers> speaker;
 
     @Lob
     @Type(type = "org.hibernate.type.BinaryType")
-
-    public List<Speakers> getSpeaker() {
-        return speaker;
-    }
-
-    public void setSpeaker(List<Speakers> speaker) {
-        this.speaker = speaker;
-    }
-
+    private byte [] speaker_photo;
     @ManyToMany(mappedBy = "speakers")
+    private List<Session> sessions;
 
-    public List<Speakers> getSpeakers() {
-        return speakers;
-    }
-
-    public void setSpeakers(List<Speakers> speakers) {
-        this.speakers = speakers;
-    }
-
-    private List<Speakers> speakers;
-
-    public Speakers() {
+    public Speaker() {
     }
 
     public Long getSpeaker_id() {
@@ -99,5 +80,13 @@ public class Speakers {
 
     public void setSpeaker_photo(byte[] speaker_photo) {
         this.speaker_photo = speaker_photo;
+    }
+
+    public List<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
     }
 }

@@ -1,12 +1,14 @@
 package com.sins.ash.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "Session")
 public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long session_id;
 
     @ManyToMany
     @JoinTable(
@@ -14,8 +16,8 @@ public class Session {
             joinColumns = @JoinColumn(name="session_id"),
             inverseJoinColumns = @JoinColumn(name="speaker_id")
     )
+    private List<Speaker> speakers;
 
-    private Long session_id;
     private String session_name;
     private String session_description;
     private Integer session_length;
