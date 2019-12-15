@@ -1,15 +1,19 @@
 package com.sins.ash.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Session")
 public class Session {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @ManyToMany
+    @JoinTable(
+            name = "session_speakers",
+            joinColumns = @JoinColumn(name="session_id"),
+            inverseJoinColumns = @JoinColumn(name="speaker_id")
+    )
 
     private Long session_id;
     private String session_name;
