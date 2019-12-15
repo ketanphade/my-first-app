@@ -1,4 +1,8 @@
 package com.sins.ash.repository;
 
-public interface SpeakerRepository {
+import com.sins.ash.models.Speaker;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SpeakerRepository extends JpaRepository<Speaker,Long> {
+
 }
