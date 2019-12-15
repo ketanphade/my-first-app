@@ -1,9 +1,8 @@
 package com.sins.ash.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Speakers")
@@ -17,7 +16,21 @@ public class Speakers {
     private String title;
     private String company;
     private String speaker_bio;
-    private Byte [] speaker_photo;
+    private byte [] speaker_photo;
+    private List<Speakers> speaker;
+
+    @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
+
+    public List<Speakers> getSpeaker() {
+        return speaker;
+    }
+
+    public void setSpeaker(List<Speakers> speaker) {
+        this.speaker = speaker;
+    }
+
+    @ManyToMany(mappedBy = "speakers")
 
     public List<Speakers> getSpeakers() {
         return speakers;
@@ -80,11 +93,11 @@ public class Speakers {
         this.speaker_bio = speaker_bio;
     }
 
-    public Byte[] getSpeaker_photo() {
+    public byte[] getSpeaker_photo() {
         return speaker_photo;
     }
 
-    public void setSpeaker_photo(Byte[] speaker_photo) {
+    public void setSpeaker_photo(byte[] speaker_photo) {
         this.speaker_photo = speaker_photo;
     }
 }
