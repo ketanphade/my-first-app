@@ -45,7 +45,7 @@ public class SpeakerController {
         Speaker existingSpeaker=speakerRepository.getOne(id);
         BeanUtils.copyProperties(speaker,existingSpeaker,"speaker_id");
         return speakerRepository.saveAndFlush(existingSpeaker);
-        
+
     }
 
 
