@@ -3,7 +3,7 @@ package com.sins.ash.models;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "Session")
+@Entity(name = "Sessions")
 public class Session {
 
     @Id
