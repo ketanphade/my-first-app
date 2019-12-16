@@ -3,6 +3,7 @@ package com.sins.ash.controller;
 import com.sins.ash.models.Session;
 import com.sins.ash.models.Speaker;
 import com.sins.ash.repository.SpeakerRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,11 +39,13 @@ public class SpeakerController {
         speakerRepository.deleteById(id);
     }
 
-    @RequestMapping(value = {'id'},method = RequestMethod.PUT)
+    @RequestMapping(value = "{id}",method = RequestMethod.PUT)
     public Speaker update(@PathVariable Long id, @RequestBody Speaker speaker){
         
         Speaker existingSpeaker=speakerRepository.getOne(id);
-
+        BeanUtils.copyProperties(speaker,existingSpeaker,"speaker_id");
+        return speakerRepository.saveAndFlush(existingSpeaker);
+        
     }
 
 
