@@ -1,5 +1,6 @@
 package com.sins.ash.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sins.ash.models.Session;
 import com.sins.ash.repository.SessionRepository;
 import org.springframework.beans.BeanUtils;
@@ -17,6 +18,7 @@ public class SessionController {
     private SessionRepository sessionRepository;
 
     @GetMapping
+    @JsonIgnore
     public List<Session> sessions(){
         return sessionRepository.findAll();
     }

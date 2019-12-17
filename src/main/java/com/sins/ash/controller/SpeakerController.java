@@ -1,5 +1,6 @@
 package com.sins.ash.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sins.ash.models.Session;
 import com.sins.ash.models.Speaker;
 import com.sins.ash.repository.SpeakerRepository;
@@ -18,6 +19,7 @@ public class SpeakerController {
     SpeakerRepository speakerRepository;
 
     @GetMapping
+    @JsonIgnore
     public List<Speaker> list(){
         return speakerRepository.findAll();
     }
