@@ -17,12 +17,11 @@ public class SessionController {
     private SessionRepository sessionRepository;
 
     @GetMapping
-    public List<Session> list(){
+    public List<Session> sessions(){
         return sessionRepository.findAll();
     }
 
-    @GetMapping
-    @RequestMapping({"id"})
+    @RequestMapping(value="{id}", method = RequestMethod.GET)
     public Session get(@PathVariable Long id){
         return sessionRepository.getOne(id);
     }

@@ -18,12 +18,12 @@ public class SpeakerController {
     SpeakerRepository speakerRepository;
 
     @GetMapping
-    public List<Speaker> speakers(){
+    public List<Speaker> list(){
         return speakerRepository.findAll();
     }
 
     @GetMapping
-    @RequestMapping({"id"})
+    @RequestMapping("{id}")
     public Speaker get(@PathVariable Long id){
         return speakerRepository.getOne(id);
     }

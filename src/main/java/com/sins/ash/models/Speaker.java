@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Speakers")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Speaker {
 
     @Id
@@ -23,8 +22,9 @@ public class Speaker {
     @Lob
     @Type(type = "org.hibernate.type.BinaryType")
     private byte [] speaker_photo;
+
+
     @ManyToMany(mappedBy = "speakers")
-    @JsonIgnore
     private List<Session> sessions;
 
     public Speaker() {

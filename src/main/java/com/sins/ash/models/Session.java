@@ -6,7 +6,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Sessions")
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Session {
 
     @Id
@@ -16,13 +15,22 @@ public class Session {
     @ManyToMany
     @JoinTable(
             name = "session_speakers",
-            joinColumns = @JoinColumn(name="session_id"),
-            inverseJoinColumns = @JoinColumn(name="speaker_id")
+            joinColumns = @JoinColumn(name="speaker_id"),
+            inverseJoinColumns = @JoinColumn(name="session_id")
     )
     private List<Speaker> speakers;
 
     private String session_name;
     private String session_description;
+
+    public List<Speaker> getSpeakers() {
+        return speakers;
+    }
+
+    public void setSpeakers(List<Speaker> speakers) {
+        this.speakers = speakers;
+    }
+
     private Integer session_length;
 
     public Session() {
