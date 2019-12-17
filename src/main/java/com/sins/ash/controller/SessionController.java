@@ -18,7 +18,6 @@ public class SessionController {
     private SessionRepository sessionRepository;
 
     @GetMapping
-    @JsonIgnore
     public List<Session> sessions(){
         return sessionRepository.findAll();
     }

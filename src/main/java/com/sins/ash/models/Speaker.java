@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Speakers")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Speaker {
 
     @Id
@@ -25,6 +26,7 @@ public class Speaker {
 
 
     @ManyToMany(mappedBy = "speakers")
+    @JsonIgnore
     private List<Session> sessions;
 
     public Speaker() {

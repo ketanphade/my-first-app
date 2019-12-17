@@ -19,7 +19,6 @@ public class SpeakerController {
     SpeakerRepository speakerRepository;
 
     @GetMapping
-    @JsonIgnore
     public List<Speaker> list(){
         return speakerRepository.findAll();
     }
@@ -49,9 +48,4 @@ public class SpeakerController {
         return speakerRepository.saveAndFlush(existingSpeaker);
 
     }
-
-
-
-
-
 }

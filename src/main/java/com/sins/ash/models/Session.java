@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Sessions")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Session {
 
     @Id
@@ -19,7 +20,6 @@ public class Session {
             inverseJoinColumns = @JoinColumn(name="session_id")
     )
     private List<Speaker> speakers;
-
     private String session_name;
     private String session_description;
 
