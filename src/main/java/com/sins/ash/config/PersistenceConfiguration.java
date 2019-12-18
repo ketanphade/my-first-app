@@ -13,6 +13,8 @@ public class PersistenceConfiguration {
     public DataSource dataSource(){
         DataSourceBuilder builder= DataSourceBuilder.create();
         builder.url("jdbc:postgresql://localhost:5432/postgres");
+        builder.username("postgres");
+        builder.password("sam");
         System.out.println("My custom datasource is initialized");
         return builder.build();
     }

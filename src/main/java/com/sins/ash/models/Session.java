@@ -2,6 +2,7 @@ package com.sins.ash.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import javax.annotation.sql.DataSourceDefinition;
 import javax.persistence.*;
 import java.util.List;
 
